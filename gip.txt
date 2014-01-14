@@ -1,0 +1,7 @@
+#	Git in Practice
+
+##	Mike McQuaid
+
+###	Manning, 2014
+
+
