@@ -5,3 +5,7 @@
 ###	Manning, 2014
 
 
+####	§2.3.3	git commit
+
+
+
