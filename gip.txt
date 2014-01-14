@@ -5,9 +5,12 @@
 ###	Manning, 2014
 
 
-####	§2.3.3	git commit
+####	§2.3.3	git add / commit
 
 
-####	§2.4	git history
+####	§2.4	git log
+
+
+####	§2.5	git diff
 
 
