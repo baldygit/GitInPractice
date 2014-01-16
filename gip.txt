@@ -4,13 +4,213 @@
 
 ###	Manning, 2014
 
+Script started on Tue Jan 14 11:24:44 2014
+bash-3.2$ hostname; pwd; 
+mbpcst1-epcc.epcc.ed.ac.uk
+/Users/smcgeeve/proj/git
+
+
+####	§2.2.1	git init
+
+bash-3.2$ git init gip
+Initialized empty Git repository in /Users/smcgeeve/proj/git/gip/.git/
+bash-3.2$ ls -al gip
+total 0
+drwxr-xr-x   3 smcgeeve  ED\Domain Users   102 Jan 14 11:25 .
+drwxr-xr-x  56 smcgeeve  ED\Domain Users  1904 Jan 14 11:25 ..
+drwxr-xr-x  10 smcgeeve  ED\Domain Users   340 Jan 14 11:25 .git
+
+bash-3.2$ find gip
+gip
+gip/.git
+gip/.git/branches
+gip/.git/config
+gip/.git/description
+gip/.git/HEAD
+gip/.git/hooks
+gip/.git/hooks/applypatch-msg.sample
+gip/.git/hooks/commit-msg.sample
+gip/.git/hooks/post-update.sample
+gip/.git/hooks/pre-applypatch.sample
+gip/.git/hooks/pre-commit.sample
+gip/.git/hooks/pre-push.sample
+gip/.git/hooks/pre-rebase.sample
+gip/.git/hooks/prepare-commit-msg.sample
+gip/.git/hooks/update.sample
+gip/.git/info
+gip/.git/info/exclude
+gip/.git/objects
+gip/.git/objects/info
+gip/.git/objects/pack
+gip/.git/refs
+gip/.git/refs/heads
+gip/.git/refs/tags
+
+bash-3.2$ pwd
+/Users/smcgeeve/proj/git
+bash-3.2$ cd gip
+bash-3.2$ ls -l
+total 8432
+-rw-r--r--@ 1 smcgeeve  ED\Domain Users  4310044 Jan  9 17:23 Git_in_Practice_v1_MEAP.pdf
+-rw-r--r--  1 smcgeeve  ED\Domain Users       56 Jan 13 11:52 gip.txt
+
 
 ####	§2.3.3	git add / commit
+
+bash-3.2$ git add 
+Nothing specified, nothing added.
+Maybe you wanted to say 'git add .'?
+bash-3.2$ 
+bash-3.2$ git add gip.txt
+bash-3.2$ git add Git_in_Practice_v1_MEAP.pdf
+bash-3.2$ 
+bash-3.2$ git status
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+#
+#	new file:   Git_in_Practice_v1_MEAP.pdf
+#	new file:   gip.txt
+#
+
+bash-3.2$ ls -l .git/index
+-rw-r--r--  1 smcgeeve  ED\Domain Users  200 Jan 14 11:35 .git/index
+bash-3.2$ git commit --message 'Initial commit of EAP'
+[master (root-commit) b3b78cf] Initial commit of EAP
+ 2 files changed, 7 insertions(+)
+ create mode 100644 Git_in_Practice_v1_MEAP.pdf
+ create mode 100644 gip.txt
+bash-3.2$ git status
+# On branch master
+nothing to commit, working directory clean
+
+bash-3.2$ # edit gip.txt
+bash-3.2$ git add .
+bash-3.2$ git commit --message '1st edit to gip.txt - §2.3.3'
+[master cd773b4] 1st edit to gip.txt - §2.3.3
+ 1 file changed, 4 insertions(+)
 
 
 ####	§2.4	git log
 
+bash-3.2$ git log
+commit cd773b47213b659179316ca43b9c72636762d440
+Author: Baldy Git <erasmios@pobox.com>
+Date:   Tue Jan 14 12:06:38 2014 +0000
+
+    1st edit to gip.txt - §2.3.3
+
+commit b3b78cfcccc776b18258e4492661c019d4eba4a9
+Author: Baldy Git <erasmios@pobox.com>
+Date:   Tue Jan 14 11:56:49 2014 +0000
+
+    Initial commit of EAP
+
+bash-3.2$ git commit --message '§2.4: git history'
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   gip.txt
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+bash-3.2$ git add .
+bash-3.2$ git commit --message '§2.4: git history'
+[master 8ffba14] §2.4: git history
+ 1 file changed, 2 insertions(+)
+bash-3.2$ git log
+commit 8ffba14b3539fb5919eb64139c7ab7b894640243
+Author: Baldy Git <erasmios@pobox.com>
+Date:   Tue Jan 14 13:50:30 2014 +0000
+
+    §2.4: git history
+
+commit cd773b47213b659179316ca43b9c72636762d440
+Author: Baldy Git <erasmios@pobox.com>
+Date:   Tue Jan 14 12:06:38 2014 +0000
+
+    1st edit to gip.txt - §2.3.3
+
+commit b3b78cfcccc776b18258e4492661c019d4eba4a9
+Author: Baldy Git <erasmios@pobox.com>
+Date:   Tue Jan 14 11:56:49 2014 +0000
+
+    Initial commit of EAP
+bash-3.2$ 
+
+
 
 ####	§2.5	git diff
 
+bash-3.2$ git diff HEAD
+bash-3.2$ 
+bash-3.2$ git diff HEAD^
+diff --git a/gip.txt b/gip.txt
+index 567c644..fae31aa 100644
+--- a/gip.txt
++++ b/gip.txt
+@@ -8,4 +8,6 @@
+ ####   §2.3.3  git commit
 
+
++####   §2.4    git history
++
+ 
+bash-3.2$ 
+bash-3.2$ git diff HEAD~2
+diff --git a/gip.txt b/gip.txt
+index 14d3f31..fae31aa 100644
+--- a/gip.txt
++++ b/gip.txt
+@@ -5,3 +5,9 @@
+ ###    Manning, 2014
+ 
+ 
++####   §2.3.3  git commit
++
++
++####   §2.4    git history
++
++
+bash-3.2$ git add .
+bash-3.2$ git commit --message '§2.5 git diff'
+[master 45f2ee8] §2.5 git diff
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+bash-3.2$ git log
+commit 45f2ee82553b462019a4a933c4ae1d404165d1d3
+Author: Baldy Git <erasmios@pobox.com>
+Date:   Tue Jan 14 14:13:48 2014 +0000
+
+    §2.5 git diff
+
+commit 8ffba14b3539fb5919eb64139c7ab7b894640243
+Author: Baldy Git <erasmios@pobox.com>
+Date:   Tue Jan 14 13:50:30 2014 +0000
+
+    §2.4: git history
+
+commit cd773b47213b659179316ca43b9c72636762d440
+Author: Baldy Git <erasmios@pobox.com>
+Date:   Tue Jan 14 12:06:38 2014 +0000
+
+    1st edit to gip.txt - §2.3.3
+
+commit b3b78cfcccc776b18258e4492661c019d4eba4a9
+Author: Baldy Git <erasmios@pobox.com>
+Date:   Tue Jan 14 11:56:49 2014 +0000
+
+    Initial commit of EAP
+bash-3.2$ git status
+# On branch master
+nothing to commit, working directory clean
+bash-3.2$ ls -lrt
+total 8432
+-rw-r--r--@ 1 smcgeeve  ED\Domain Users  4310044 Jan  9 17:23 Git_in_Practice_v1_MEAP.pdf
+-rw-r--r--  1 smcgeeve  ED\Domain Users      131 Jan 14 14:15 gip.txt
+bash-3.2$ exit
+
+Script done on Tue Jan 14 14:26:00 2014
